@@ -12,6 +12,7 @@
   transition:
     opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
     visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
 }
 
 .backdrop.is-open {
@@ -26,7 +27,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 408px;
+  width: calc(100% - 32px);
+  max-width: 408px;
   min-height: 584px;
   background: #fcfcfc;
   box-shadow:
@@ -36,6 +38,13 @@
   border-radius: 4px;
   padding: 72px 24px 24px 24px;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Tablet & Desktop (від 768px) */
+@media screen and (min-width: 768px) {
+  .modal {
+    width: 408px;
+  }
 }
 
 /* Close Button */
@@ -50,7 +59,7 @@
   align-items: center;
   justify-content: center;
   background-color: #e7e9fc;
-  border: 1px solid rgba(46, 47, 66, 0.4); /* Було: rgba(0, 0, 0, 0.1) */
+  border: 1px solid rgba(46, 47, 66, 0.4);
   padding: 0;
   cursor: pointer;
   color: #2e2f42;
@@ -165,6 +174,8 @@
 }
 
 .modal-checkbox-label {
+  display: flex;
+  align-items: center;
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 0.04em;
@@ -172,6 +183,7 @@
 }
 
 .custom-checkbox {
+  flex-shrink: 0;
   width: 16px;
   height: 16px;
   border: 1px solid rgba(46, 47, 66, 0.4);
